@@ -1,0 +1,1 @@
+{"name":"learningbridge-hci","version":"1.0.0","private":true,"type":"module","description":"Al Ahly's Milestone 3 interactive HCI prototype","scripts":{"start":"node serve.cjs","test":"node tests/model.test.mjs","check":"node --check dist/app.js && node --check dist/model.js"},"engines":{"node":">=18"}}

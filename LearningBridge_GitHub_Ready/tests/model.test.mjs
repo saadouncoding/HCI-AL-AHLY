@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import * as M from '../dist/model.js';
+const s=M.initial();M.newExam(s,{lang:'en',files:[{sample:true}]});assert.equal(M.visibleResult(s),null);
+assert.throws(()=>M.publish(s));assert.throws(()=>M.verify(s));M.finishScan(s);
+M.editText(s,1,'1/3 > 1/4');s.active.checked=[true,true,true];M.verify(s);M.finishGrade(s);
+s.active.marks[1]=4;assert.throws(()=>M.confirmGrades(s));s.active.marks[1]=2;M.confirmGrades(s);assert.equal(M.total(s.active),8);assert.equal(M.canPublish(s.active),false);
+Object.assign(s.active,{decision:'confirmed',reason:'Repeated verified evidence',feedback:'Great progress',practice:'Explain fractions',followup:'2026-11-18'});M.publish(s);assert.equal(M.visibleResult(s).marks[1],2);assert.equal(s.notifications[0].type,'result');
+M.revise(s);assert.equal(M.visibleResult(s),null);assert.equal(s.active.decision,null);assert.equal(s.active.gradeConfirmed,false);assert.deepEqual(s.active.checked,[false,false,false]);
+M.requestPage(s,'Page blurry');assert.equal(s.active.status,'replacement');M.replacePages(s,[{sample:true}]);M.finishScan(s);assert.equal(s.active.status,'verify');
+s.active.checked=[true,true,true];M.verify(s);M.finishGrade(s);s.active.marks[1]=3;M.confirmGrades(s);assert.equal(M.hasGap(s.active),false);
+Object.assign(s.active,{decision:'dismissed',reason:'No recurring current difficulty',feedback:'Good',practice:'Keep practising',followup:'2026-11-18'});M.publish(s);assert.equal(M.visibleResult(s).decision,'dismissed');
+console.log('PASS: workflow guards, score bounds, overrides, publication, invalidation, replacement, and non-recurring gap');

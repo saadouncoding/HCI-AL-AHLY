@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-14T14:50:01.361Z",
+  "checks": [
+    "Student entry and dashboard render",
+    "Empty upload rejected",
+    "Unsupported file rejected",
+    "Preview and failed-send recovery retain selected pages",
+    "Upload reaches teacher verification; no pending score shown",
+    "Queue identity toggle and verification gate",
+    "OCR correction persists and verified answers unlock simulated grading",
+    "Out-of-range grade cannot be confirmed",
+    "Answer-key import and live total update",
+    "Teacher score override saved; publication gated",
+    "Evidence decision, feedback, preview and publication complete",
+    "Student sees exact teacher total, approved feedback and no private note",
+    "Notification, fraction-strip practice and response submission",
+    "Teacher closes the Evidence-to-Practice follow-up and sends a reply",
+    "Reviewed-results CSV export",
+    "Reopening OCR invalidates approvals and hides the pending result",
+    "Clearer-page request, actual PNG upload/preview and resubmission",
+    "State and uploaded original persist after reload via local storage and IndexedDB",
+    "Dismissed support flag does not appear as confirmed support to student",
+    "German UI and German exam scenario; prior result retained in history",
+    "390px student and teacher layouts without horizontal page overflow",
+    "No browser runtime errors during tested workflows"
+  ],
+  "errors": []
+}
